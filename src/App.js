@@ -1,36 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
 import ClassCounter from './Components/ClassCounter';
-import React from 'react';
+import React, { useState} from 'react';
 
 
-class App extends React.Component {
-    constructor() {
-      super();
-      this.state = { number: 0};
+  function App() {
+    const [number, setNumber] = useState(0);
+  
+    function handleIncrease() {
+      setNumber(number + 1);
     }
   
-    AddOne() {
-      this.setState({
-        number: this.state.number + 1
-      });
+    function handleDecrease(){
+      setNumber(number - 1)
     }
-  
-    SubtractOne(){
-      this.setState({
-        number: this.state.number - 1
-      })
-    }
-    render() {
-      return (
-        <div>
-          <h1>{this.state.number}</h1>
-          <button onClick={() => this.AddOne()}>Add 1</button>
-          <button onClick={() => this.SubtractOne()}>Sub</button>
-        </div>
-      );
-    }
+
+    return (
+      <div>
+        <h1>{number}</h1>
+        <button onClick={() => handleIncrease()}>Increase Count</button>
+        <button onClick={() => handleDecrease()}>Decrease Count</button>
+      </div>
+    );
   }
 
-
 export default App;
+
+
